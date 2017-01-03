@@ -20,3 +20,6 @@ envtpl < /tmp/templates/config.yaml.template > $DATAWRAPPER_ROOT_DIRECTORY/confi
 
 # install plugins and stuff. dunno why this needs db.
 php $DATAWRAPPER_ROOT_DIRECTORY/scripts/plugin.php install "*"
+
+# needed for datawrapper debug_log() function
+touch $DATAWRAPPER_ROOT_DIRECTORY/log.txt && chown www-data.www-data $DATAWRAPPER_ROOT_DIRECTORY/log.txt 
