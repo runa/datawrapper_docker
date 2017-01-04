@@ -1,6 +1,6 @@
 FROM jbfink/lampstack:latest
 
-MAINTAINER Ara Hayrabedian <>
+MAINTAINER Martin Sarsale <martin@properati.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
