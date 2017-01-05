@@ -37,7 +37,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN npm install 
 RUN npm install -g grunt 
 RUN grunt
-RUN cp www/static/vendor/queue-async/queue.js www/static/vendor/queue-async/queue.min.js
+RUN cp www/static/vendor/queue-async/queue.js www/static/vendor/queue-async/queue.min.js # see here https://github.com/datawrapper/datawrapper/issues/195
 
 #RUN chown -R www-data:www-data $DATAWRAPPER_ROOT_DIRECTORY/charts
 #RUN chown -R www-data:www-data $DATAWRAPPER_ROOT_DIRECTORY/tmp
