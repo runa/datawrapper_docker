@@ -90,6 +90,11 @@ footer_links:
 
 
 plugins:
+  publish-rsync:
+    method: rsync
+    destination: {{ RSYNC_DESTINATION}}
+    base_url: {{ RSYNC_BASE_URL }}
+    password: {{ RSYNC_PASSWORD }}
 
   # analytics-piwik:
   #   url: piwik.datawrapper.de  # without http:// and trailing slash
