@@ -24,7 +24,7 @@ RUN apt-get update -yq --fix-missing && \
                        pip install envtpl
 
 WORKDIR $DATAWRAPPER_ROOT_DIRECTORY
-RUN curl -s -L https://github.com/datawrapper/datawrapper/archive/v1.10.1.tar.gz | tar xz --strip-components=1
+RUN curl -s -L https://github.com/properati/datawrapper/archive/master.tar.gz | tar xz --strip-components=1
 RUN git clone https://github.com/properati/publish-embed.git $DATAWRAPPER_PLUGINS_DIRECTORY/publish-embed
 RUN git clone https://github.com/properati/datawrapper-plugin-publish-rsync.git $DATAWRAPPER_PLUGINS_DIRECTORY/publish-rsync
 
