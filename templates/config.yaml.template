@@ -115,6 +115,33 @@ plugins:
 #     path: /path/to/phantomjs
 
 
+languages:
+- id: cs_CZ
+  title: "CS"
+- id: es_ES
+  title: "ES"
+- id: en_US
+  title: "EN (US)"
+- id: en_GB
+  title: "EN (GB)"
+- id: de_DE
+  title: "DE"
+- id: fr_FR
+  title: "FR"
+- id: it_IT
+  title: "IT"
+- id: pt_BR
+  title: "PT"
+- id: ro_RO
+  title: "RO"
+- id: th_TH
+  title: "TH"
+- id: zh_CN
+  title: "ZH (CN)"
+- id: zh_TW
+  title: "ZH (TW)"
+
+
 ########################################################
 #                                                      #
 #  Anything below this line is for debugging/testing   #
