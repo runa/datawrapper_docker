@@ -13,8 +13,13 @@ while [[ RET -ne 0 ]]; do
 done
 
 # initialize database and schema
-mysql -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u root --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}} -e "CREATE DATABASE {{ DATAWRAPPER_DB_NAME | default("datawrapper") }};"
-cat $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/sql/schema.sql | mysql {{ DATAWRAPPER_DB_NAME | default("datawrapper") }} -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u {{ DATAWRAPPER_DB_USERNAME | default("root")}} --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}}
+if ( mysql -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u root --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}} -e "USE {{ DATAWRAPPER_DB_NAME | default("datawrapper") }};" ); then 
+  echo "=> DB already exists!"
+else
+  echo "=> Creating DB and populating it"
+  mysql -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u root --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}} -e "CREATE DATABASE {{ DATAWRAPPER_DB_NAME | default("datawrapper") }};"
+  cat $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/sql/schema.sql | mysql {{ DATAWRAPPER_DB_NAME | default("datawrapper") }} -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u {{ DATAWRAPPER_DB_USERNAME | default("root")}} --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}}
+fi
 
 # generate datawrapper configuration at startup time as we will have credentials then.
 envtpl < /tmp/templates/datawrapper-conf.php.master.template > $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/conf/datawrapper-conf.php
