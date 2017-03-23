@@ -32,6 +32,14 @@ envtpl < /tmp/templates/config.yaml.template > $DATAWRAPPER_ROOT_DIRECTORY/confi
 
 # install plugins and stuff. dunno why this needs db.
 php $DATAWRAPPER_ROOT_DIRECTORY/scripts/plugin.php install "*"
+
+# create writable dires
+mkdir -p $DATAWRAPPER_ROOT_DIRECTORY/charts/static
+mkdir -p $DATAWRAPPER_ROOT_DIRECTORY/charts/data
+mkdir -p $DATAWRAPPER_ROOT_DIRECTORY/charts/images
+mkdir -p $DATAWRAPPER_ROOT_DIRECTORY/charts/data
+mkdir -p $DATAWRAPPER_ROOT_DIRECTORY/charts/tmp
+
 chown www-data.www-data $DATAWRAPPER_ROOT_DIRECTORY
 chown -R www-data.www-data $DATAWRAPPER_ROOT_DIRECTORY
 
